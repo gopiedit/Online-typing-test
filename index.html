@@ -1,67 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Best online typing practice tool for all levels—beginner, intermediate, advanced. Improve your typing speed with tests, games, tutorials, and more." />
   <meta name="keywords" content="online typing practice, typing speed test, typing games, typing tutorial, beginner typing, advanced typing, improve typing" />
   <meta name="author" content="TypingMaster" />
   <title>Online Typing Practice - Boost Your Typing Speed | TypingMaster</title>
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "TypingMaster",
-    "url": "https://onlinetypingpractice.app",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://onlinetypingpractice.app/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    },
-    "hasPart": [
-      { "@type": "WebPageElement", "name": "Beginner Typing Practice", "url": "https://onlinetypingpractice.app/beginner.html" },
-      { "@type": "WebPageElement", "name": "Typing Speed Test", "url": "https://onlinetypingpractice.app/test.html" },
-      { "@type": "WebPageElement", "name": "Typing Games", "url": "https://onlinetypingpractice.app/games.html" },
-      { "@type": "WebPageElement", "name": "Typing Tutorials", "url": "https://onlinetypingpractice.app/tutorial.html" }
-    ]
-  }
-  </script>
-
-  <style>
-    /* ------ CSS Same as Previous Code - For brevity, This is shortened, use full CSS from previous message ------ */
-    :root {
-      --primary: #3f51b5;
-      --secondary: #6ec6ff;
-      --success: #00bfa5;
-      --warning: #ffb300;
-      --danger: #f44336;
-      --info: #29b6f6;
-      --bg: #fafafa;
-      --focus-color: #ff4081;
-      --card-radius: 18px;
-      --transition-speed: 0.28s;
-      --font-size-base: 16px;
-      --font-size-large: 18px;
-      --font-size-small: 14px;
-    }
-    /* please include full CSS from the last complete code message here for full effect */
-    /* ... full CSS from previous message to be inserted here ... */
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
-
   <header class="header" role="banner">
     <div class="logo" aria-label="TypingMaster logo" role="img" tabindex="0">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4v16h14V4H5zm13 15H6V5h12v14zm-7.5-3.5h1v-5h-1v5zm3 0h1v-5h-1v5z"/></svg>
       <strong>TypingMaster</strong>
     </div>
     <nav class="menu-nav" role="navigation" aria-label="Primary navigation">
-      <button class="menu-btn active" aria-current="page" data-target="https://onlinetypingpractice.app/index.html">Home</button>
-      <button class="menu-btn" data-target="https://onlinetypingpractice.app/test.html">Test</button>
-      <button class="menu-btn" data-target="https://onlinetypingpractice.app/game.html">Game</button>
+      <button class="menu-btn active" aria-current="page" data-target="index.html">Home</button>
+      <button class="menu-btn" data-target="test.html">Test</button>
+      <button class="menu-btn" data-target="game.html">Game</button>
       <button id="darkModeToggle" title="Toggle dark mode" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
     </nav>
   </header>
@@ -73,27 +31,27 @@
     </section>
 
     <section class="card-grid" aria-label="Typing practice options">
-      <article tabindex="0" class="card beginner" role="article" aria-labelledby="card-beginner-title" data-target="https://onlinetypingpractice.app/beginner.html" aria-describedby="desc-beginner" draggable="true">
+      <article tabindex="0" class="card beginner" role="article" aria-labelledby="card-beginner-title" data-target="beginner.html" aria-describedby="desc-beginner" draggable="true">
         <h2 id="card-beginner-title">Beginner Level Typing</h2>
         <p id="desc-beginner">Start with simple typing lessons for beginners to build your speed and accuracy step-by-step.</p>
       </article>
-      <article tabindex="0" class="card intermediate" role="article" aria-labelledby="card-intermediate-title" data-target="https://onlinetypingpractice.app/intermediate.html" aria-describedby="desc-intermediate" draggable="true">
+      <article tabindex="0" class="card intermediate" role="article" aria-labelledby="card-intermediate-title" data-target="intermediate.html" aria-describedby="desc-intermediate" draggable="true">
         <h2 id="card-intermediate-title">Intermediate Level Practice</h2>
         <p id="desc-intermediate">Improve your typing with moderate exercises increasing both speed and precision gradually.</p>
       </article>
-      <article tabindex="0" class="card advanced" role="article" aria-labelledby="card-advanced-title" data-target="https://onlinetypingpractice.app/advanced.html" aria-describedby="desc-advanced" draggable="true">
+      <article tabindex="0" class="card advanced" role="article" aria-labelledby="card-advanced-title" data-target="advanced.html" aria-describedby="desc-advanced" draggable="true">
         <h2 id="card-advanced-title">Advanced Typing Challenges</h2>
         <p id="desc-advanced">Take challenging typing drills to master speed and accuracy on difficult texts.</p>
       </article>
-      <article tabindex="0" class="card test" role="article" aria-labelledby="card-test-title" data-target="https://onlinetypingpractice.app/test.html" aria-describedby="desc-test" draggable="true">
+      <article tabindex="0" class="card test" role="article" aria-labelledby="card-test-title" data-target="test.html" aria-describedby="desc-test" draggable="true">
         <h2 id="card-test-title">Typing Speed Tests</h2>
         <p id="desc-test">Evaluate your progress by taking timed, accurate typing speed and accuracy tests.</p>
       </article>
-      <article tabindex="0" class="card games" role="article" aria-labelledby="card-games-title" data-target="https://onlinetypingpractice.app/games.html" aria-describedby="desc-games" draggable="true">
+      <article tabindex="0" class="card games" role="article" aria-labelledby="card-games-title" data-target="games.html" aria-describedby="desc-games" draggable="true">
         <h2 id="card-games-title">Typing Games</h2>
         <p id="desc-games">Play engaging typing games to practice while having fun and improving your skills.</p>
       </article>
-      <article tabindex="0" class="card tutorial" role="article" aria-labelledby="card-tutorial-title" data-target="https://onlinetypingpractice.app/tutorial.html" aria-describedby="desc-tutorial" draggable="true">
+      <article tabindex="0" class="card tutorial" role="article" aria-labelledby="card-tutorial-title" data-target="tutorial.html" aria-describedby="desc-tutorial" draggable="true">
         <h2 id="card-tutorial-title">Typing Tutorials</h2>
         <p id="desc-tutorial">Learn expert typing techniques with easy-to-follow tutorials and tips.</p>
       </article>
@@ -106,216 +64,15 @@
 
   <footer class="footer" role="contentinfo">
     <nav role="navigation" aria-label="Footer navigation">
-      <a href="https://onlinetypingpractice.app/index.html" tabindex="0">Home</a>
-      <a href="https://onlinetypingpractice.app/privacy-policy.html" tabindex="0">Privacy Policy</a>
-      <a href="https://onlinetypingpractice.app/disclaimer.html" tabindex="0">Disclaimer</a>
-      <a href="https://onlinetypingpractice.app/about-us.html" tabindex="0">About Us</a>
-      <a href="https://onlinetypingpractice.app/contact-us.html" tabindex="0">Contact Us</a>
+      <a href="index.html" tabindex="0">Home</a>
+      <a href="privacy-policy.html" tabindex="0">Privacy Policy</a>
+      <a href="disclaimer.html" tabindex="0">Disclaimer</a>
+      <a href="about-us.html" tabindex="0">About Us</a>
+      <a href="contact-us.html" tabindex="0">Contact Us</a>
     </nav>
     <p>© 2025 TypingMaster. All rights reserved.</p>
   </footer>
 
-  <script>
-    // Dark Mode Toggle
-    const darkToggleBtn = document.getElementById('darkModeToggle');
-    function setDarkMode(enabled) {
-      document.body.classList.toggle('dark-mode', enabled);
-      darkToggleBtn.setAttribute('aria-pressed', enabled);
-      localStorage.setItem('typing_dark_mode', enabled);
-    }
-    darkToggleBtn.addEventListener('click', () => {
-      setDarkMode(!document.body.classList.contains('dark-mode'));
-      playClickSound();
-    });
-    window.addEventListener('DOMContentLoaded', () => {
-      if(localStorage.getItem('typing_dark_mode') === 'true') setDarkMode(true);
-    });
-
-    // Page Transitions + Sound Effects
-    function fadeOutIn(url) {
-      const overlay = document.createElement('div');
-      overlay.style.position = 'fixed';
-      overlay.style.top = 0;
-      overlay.style.left = 0;
-      overlay.style.width = '100%';
-      overlay.style.height = '100%';
-      overlay.style.backgroundColor = '#000';
-      overlay.style.opacity = '0';
-      overlay.style.transition = 'opacity 0.6s ease';
-      overlay.style.zIndex = 3000;
-      document.body.appendChild(overlay);
-      requestAnimationFrame(() => overlay.style.opacity = '0.9');
-      setTimeout(() => window.location.href = url, 600);
-    }
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    const audioCtx = new AudioContext();
-    function playSound(frequency = 440, duration = 100) {
-      if(audioCtx.state === 'suspended') audioCtx.resume();
-      const oscillator = audioCtx.createOscillator();
-      const gainNode = audioCtx.createGain();
-      oscillator.connect(gainNode);
-      gainNode.connect(audioCtx.destination);
-      oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
-      oscillator.type = 'square';
-      oscillator.start();
-      gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration / 1000);
-      oscillator.stop(audioCtx.currentTime + duration / 1000);
-    }
-    function playClickSound() { playSound(660, 80); }
-
-    // Navigation logic
-    function openPage(url) {
-      if(url) {
-        playClickSound();
-        fadeOutIn(url);
-      }
-    }
-    document.querySelectorAll('.card').forEach(card => {
-      card.style.cursor = 'pointer';
-      card.addEventListener('click', () => openPage(card.dataset.target));
-      card.addEventListener('keydown', e => {
-        if(e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openPage(card.dataset.target);
-        }
-      });
-    });
-    document.querySelectorAll('nav.menu-nav .menu-btn').forEach(btn => {
-      btn.style.cursor = 'pointer';
-      btn.addEventListener('click', () => openPage(btn.dataset.target));
-      btn.addEventListener('keydown', e => {
-        if(e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openPage(btn.dataset.target);
-        }
-      });
-    });
-
-    // Magic click particle
-    document.addEventListener('click', e => {
-      const particle = document.createElement('div');
-      particle.classList.add('magic-particle');
-      document.body.appendChild(particle);
-      particle.style.left = (e.clientX - 8) + 'px';
-      particle.style.top = (e.clientY - 8) + 'px';
-      particle.addEventListener('animationend', () => particle.remove());
-    });
-
-    // Trailing particles
-    let particlesArray = [];
-    const maxParticles = 30;
-    function createTrailParticle(x, y) {
-      if(particlesArray.length >= maxParticles) return;
-      const particle = document.createElement('div');
-      particle.classList.add('trail-particle');
-      particle.style.left = x + 'px';
-      particle.style.top = y + 'px';
-      document.body.appendChild(particle);
-      particle.addEventListener('animationend', () => {
-        particle.remove();
-        particlesArray = particlesArray.filter(p => p !== particle);
-      });
-      particlesArray.push(particle);
-    }
-    function throttle(fn, delay) {
-      let lastCall = 0;
-      return function(...args) {
-        const now = Date.now();
-        if(now - lastCall >= delay) {
-          lastCall = now;
-          fn(...args);
-        }
-      };
-    }
-    const throttledCreateTrailParticle = throttle((x,y) => createTrailParticle(x,y), 20);
-    function onPointerMove(e) {
-      let x,y;
-      if(e.touches && e.touches.length > 0) {
-        x = e.touches[0].clientX; y = e.touches[0].clientY;
-      } else {
-        x = e.clientX; y = e.clientY;
-      }
-      throttledCreateTrailParticle(x,y);
-    }
-    window.addEventListener('mousemove', onPointerMove);
-    window.addEventListener('touchmove', onPointerMove, { passive: true });
-
-    // Fevicol sticky cards effect
-    let draggedCard = null;
-    let stickTarget = null;
-    let connector = null;
-    function centerOf(el) {
-      const rect = el.getBoundingClientRect();
-      return { x: rect.left + rect.width/2, y: rect.top + rect.height/2 };
-    }
-    function createConnector() {
-      connector = document.createElement('div');
-      connector.className = 'fevicol-connector';
-      document.body.appendChild(connector);
-    }
-    function updateConnector(el1, el2) {
-      const c1 = centerOf(el1), c2 = centerOf(el2);
-      const dx = c2.x - c1.x, dy = c2.y - c1.y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-      connector.style.width = dist + 'px';
-      connector.style.top = c1.y + 'px';
-      connector.style.left = c1.x + 'px';
-      connector.style.transform = `rotate(${angle}deg)`;
-    }
-    function removeConnector() {
-      if(connector) {
-        connector.remove();
-        connector = null;
-      }
-    }
-    document.querySelectorAll('.card[draggable="true"]').forEach(card => {
-      card.addEventListener('dragstart', e => {
-        draggedCard = card;
-        card.classList.add('fevicol-sticky');
-        createConnector();
-      });
-      card.addEventListener('dragend', e => {
-        if(stickTarget) {
-          stickTarget.classList.remove('fevicol-stick-target');
-          stickTarget = null;
-        }
-        if(draggedCard) draggedCard.classList.remove('fevicol-sticky');
-        draggedCard = null;
-        removeConnector();
-      });
-      card.addEventListener('dragover', e => {
-        e.preventDefault();
-        if(!draggedCard || draggedCard === card) return;
-        if(stickTarget && stickTarget !== card) {
-          stickTarget.classList.remove('fevicol-stick-target');
-        }
-        stickTarget = card;
-        stickTarget.classList.add('fevicol-stick-target');
-        if(draggedCard) updateConnector(draggedCard, stickTarget);
-      });
-      card.addEventListener('dragleave', e => {
-        if(stickTarget === card) {
-          stickTarget.classList.remove('fevicol-stick-target');
-          stickTarget = null;
-          if(connector && draggedCard) updateConnector(draggedCard, draggedCard);
-        }
-      });
-      card.addEventListener('drag', e => {
-        if(!draggedCard || (e.clientX === 0 && e.clientY === 0)) return;
-        if(stickTarget) updateConnector(draggedCard, stickTarget);
-      });
-    });
-  </script>
-
-  <!-- Google Analytics - अपनी ID डालें -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-  
+  <script src="script.js"></script>
 </body>
 </html>
