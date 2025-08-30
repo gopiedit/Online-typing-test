@@ -1,0 +1,254 @@
+:root {
+  --primary: #3f51b5;
+  --secondary: #6ec6ff;
+  --success: #00bfa5;
+  --warning: #ffb300;
+  --danger: #f44336;
+  --info: #29b6f6;
+  --bg: #fafafa;
+  --focus-color: #ff4081;
+  --card-radius: 18px;
+  --transition-speed: 0.28s;
+  --font-size-base: 16px;
+  --font-size-large: 18px;
+  --font-size-small: 14px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: #222;
+  min-height: 100vh;
+  line-height: 1.5;
+  font-size: var(--font-size-base);
+}
+a { color: inherit; text-decoration: none; }
+a:focus, button:focus, article:focus {
+  outline: 3px solid var(--focus-color);
+  outline-offset: 3px;
+}
+.dark-mode {
+  background: #181b24 !important;
+  color: #eee !important;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem 0.9rem 2.5rem;
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(63,81,181,0.18);
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+}
+.logo {
+  font-size: 1.9rem;
+  letter-spacing: 0.05em;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-shrink: 0;
+}
+.logo svg {
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.4));
+  transition: filter 0.3s ease;
+}
+nav.menu-nav {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  min-width: 180px;
+}
+.menu-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: var(--font-size-large);
+  padding: 14px 22px;
+  border-radius: 22px;
+  cursor: pointer;
+  transition: background var(--transition-speed) ease, transform var(--transition-speed) ease;
+  min-width: 80px;
+}
+.menu-btn:hover, .menu-btn:focus, .menu-btn.active {
+  background: rgba(110, 198, 255, 0.45);
+  transform: scale(1.12);
+}
+#darkModeToggle {
+  background: #12121233;
+  border:none;
+  color: #fff;
+  padding: 11px 16px;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: transform 0.4s ease, background-color 0.3s ease;
+}
+#darkModeToggle:hover {
+  transform: rotate(25deg);
+  background-color: #4a90e2cc;
+}
+main {
+  max-width: 1120px;
+  margin: 3rem auto 4rem auto;
+  padding: 0 1.25rem;
+}
+.intro {
+  text-align: center;
+  margin-bottom: 2.7rem;
+}
+.intro h1 {
+  font-size: 2.7rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: var(--primary);
+  user-select: text;
+  letter-spacing: 0.015em;
+  text-shadow: 1px 1px 3px rgb(63 81 181 / 0.33);
+}
+.tagline {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #444;
+  letter-spacing: 0.015em;
+}
+.dark-mode .tagline { color: #bbb; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 32px 28px;
+  user-select: none;
+}
+.card {
+  position: relative;
+  border-radius: var(--card-radius);
+  padding: 36px 28px 34px;
+  text-align: center;
+  cursor: pointer;
+  min-height: 200px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  outline-offset: 4px;
+  background: #fff;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.6s, box-shadow 0.4s;
+}
+.card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: inherit;
+  font-weight: 800;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+}
+.card p {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  max-width: 90%;
+  margin: 0 auto;
+  font-weight: 600;
+  color: inherit;
+  opacity: 0.9;
+}
+
+/* अलग-अलग रंग और एनिमेशन */
+/* BEGINNER */
+.card.beginner { background: linear-gradient(135deg, #b2dfdb 0%, #00796b 100%); color: #e6f4f1; animation: pulseGreen 5s ease-in-out infinite;}
+@keyframes pulseGreen {0%,100%{box-shadow:0 0 12px 2px #004d40;}50%{box-shadow:0 0 24px 6px #00796b;} }
+.card.beginner:hover{ background: linear-gradient(45deg, #00a676 0%, #004d40 100%); box-shadow:0 0 48px 10px #00a676cc; color:#c4f1d8; transform:scale(1.08);}
+
+/* INTERMEDIATE */
+.card.intermediate{background:linear-gradient(135deg,#bbdefb 0%,#1e88e5 100%);color:#e8f0fe;animation:waveBlue 6s ease-in-out infinite;}
+@keyframes waveBlue{0%,100%{box-shadow:0 0 12px 3px #0d47a1;}50%{box-shadow:0 0 38px 8px #42a5f5;}}
+.card.intermediate:hover{background:linear-gradient(45deg,#42a5f5 0%,#0d47a1 100%);box-shadow:0 0 48px 10px #0d47a1cc; color:#d8eaff; transform:scale(1.08);}
+
+/* ADVANCED */
+.card.advanced{background:linear-gradient(135deg,#ffcdd2 0%,#d32f2f 100%);color:#fff1f1;animation:flickerRed 4s linear infinite alternate;}
+@keyframes flickerRed{0%,100%{box-shadow:0 0 14px 3px #b71c1c;}30%,70%{box-shadow:0 0 36px 12px #e53935;}50%{box-shadow:0 0 8px 2px #ff6659;}}
+.card.advanced:hover{background:linear-gradient(45deg,#e53935 0%,#b71c1c 100%);box-shadow:0 0 48px 10px #b71c1ccc; color:#ffdad4; transform:scale(1.08);}
+
+/* TEST */
+.card.test{background:linear-gradient(135deg,#c8e6c9 0%,#388e3c 100%);color:#edf7ed;animation:gntGreenGlow 5s ease-in-out infinite;}
+@keyframes gntGreenGlow{0%,100%{box-shadow:0 0 10px 3px #1b5e20;}50%{box-shadow:0 0 32px 9px #43a047;}}
+.card.test:hover{background:linear-gradient(45deg,#43a047 0%,#1b5e20 100%);box-shadow:0 0 48px 10px #1b5e20cc;color:#d8fbd8;transform:scale(1.08);}
+
+/* GAMES */
+.card.games{background:linear-gradient(135deg,#fff9c4 0%,#fbc02d 100%);color:#4a4a00;animation:shineYellow 6s ease-in-out infinite;}
+@keyframes shineYellow{0%,100%{box-shadow:0 0 12px 4px #fbc02d;}50%{box-shadow:0 0 34px 12px #fdd835;}}
+.card.games:hover{background:linear-gradient(45deg,#fdd835 0%,#f57f17 100%);box-shadow:0 0 48px 10px #f57f17cc;color:#403c00;transform:scale(1.08);}
+
+/* TUTORIAL */
+.card.tutorial{background:linear-gradient(135deg,#b3e5fc 0%,#0288d1 100%);color:#e1f5fe;animation:softBluePulse 4s ease-in-out infinite;}
+@keyframes softBluePulse{0%,100%{box-shadow:0 0 10px 3px #01579b;}50%{box-shadow:0 0 26px 7px #03a9f4;}}
+.card.tutorial:hover{background:linear-gradient(45deg,#03a9f4 0%,#01579b 100%);box-shadow:0 0 48px 10px #039be5cc;color:#cbe9ff;transform:scale(1.08);}
+
+.seo-below {max-width:720px;margin:3rem auto 2rem auto;text-align:center;color:#333;font-size:1.12rem;font-weight:500;opacity:.95;line-height:1.5;}
+.dark-mode .seo-below{color:#aaa;}
+.footer {background: var(--primary);color: #fff;padding:26px 10px 20px 10px;text-align:center;font-size: var(--font-size-small);}
+.footer nav {margin-bottom: 12px;}
+.footer nav a {color:#fff;margin:0 18px;font-size:var(--font-size-base);font-weight:600;}
+.footer nav a:hover,.footer nav a:focus {color:#96c5ff;text-decoration:underline;}
+.footer p {opacity:.75;margin:0;}
+
+@media (max-width: 720px) {
+  .card-grid {grid-template-columns:1fr 1fr;gap:24px 20px;}
+}
+@media (max-width: 460px) {
+  body {font-size:var(--font-size-small);}
+  .card-grid {grid-template-columns:1fr;gap:16px;}
+  .intro h1 {font-size:2rem;}
+  .tagline {font-size:1rem;}
+  .menu-btn {padding:11px 14px;min-width:72px;}
+  header.header {padding:1rem 1.2rem 0.9rem 1.2rem;}
+  main {padding:0 1rem;margin:2rem auto 3rem auto;}
+  .footer nav a {margin:0 12px;}
+}
+
+/* Magic, trail, Fevicol etc. add from previous js code for particle and sticky effect */
+.magic-particle {
+  position: fixed;
+  pointer-events: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(100,180,255,0.4) 40%, transparent 80%);
+  box-shadow: 0 0 10px 3px rgba(100,180,255,0.7);
+  animation: floatUp 0.8s forwards ease-out;
+  transform-origin: center;
+  z-index: 1500;
+  mix-blend-mode: screen;
+}
+@keyframes floatUp {
+  0% {transform:translateY(0) scale(1);opacity:1;}
+  100% {transform:translateY(-80px) scale(0.4);opacity:0;}
+}
+.trail-particle {
+  position: fixed;
+  pointer-events: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #58aaff, #0351a2);
+  box-shadow: 0 0 8px 2px #58aaff,0 0 14px 6px #0351a2;
+  opacity: 0.8;
+  animation: trailFade 0.7s forwards ease-out;
+  z-index: 1400;
+  mix-blend-mode: screen;
+}
+@keyframes trailFade {
+  from {opacity:0.8;transform:scale(1);}
+  to {opacity:0;transform:scale(0.3);}
+}
+/* Fevicol sticky effect */
+.card.fevicol-sticky { cursor:grabbing!important; box-shadow:0 0 50px 15px #3f51b5, inset 0 0 25px 12px #3f51b5b3; z-index:1002; transform:scale(1.12) translateY(-14px);}
+.card.fevicol-stick-target {transition:none; box-shadow:0 0 38px 10px #00a676cc, inset 0 0 30px 6px #004d40cc; transform:scale(1.04) translateY(-10px);z-index:1001;}
+.fevicol-connector {position:fixed;pointer-events:none;height:4px;background:linear-gradient(to right,#3f51b5,#6ec6ff);z-index:1000;border-radius:4px;opacity:0.85;}
