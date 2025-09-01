@@ -1,186 +1,77 @@
 // Dark Mode Toggle
-const darkToggleBtn = document.getElementById('darkModeToggle');
+const themeToggle = document.getElementById('theme-toggle');
 
-function setDarkMode(enabled) {
-    document.body.classList.toggle('dark-mode', enabled);
-    darkToggleBtn.setAttribute('aria-pressed', enabled);
-    darkToggleBtn.innerHTML = enabled ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    localStorage.setItem('typing_dark_mode', enabled);
+themeToggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode');
+});
+
+// Animation for cards on scroll
+const cards = document.querySelectorAll('.card');
+
+function checkScroll() {
+    cards.forEach(card => {
+        const cardPosition = card.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+
+        if (cardPosition < screenPosition) {
+            card.classList.add('show');
+        }
+    });
 }
 
-darkToggleBtn.addEventListener('click', () => {
-    setDarkMode(!document.body.classList.contains('dark-mode'));
-});
+window.addEventListener('scroll', checkScroll);
+window.addEventListener('load', checkScroll);
 
-window.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('typing_dark_mode') === 'true') setDarkMode(true);
-    
-    // Initialize animations
-    initAnimations();
-    initTestimonialAnimation();
-    initTypingAnimation();
-});
-
-// Card navigation
-function openPage(url) { 
-    if (url) {
-        // Add page transition effect
-        document.body.style.opacity = '0';
-        setTimeout(() => {
-            window.location.href = url;
-        }, 300);
-    }
-}
-
-document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', () => {
-        const target = card.querySelector('.card-button').textContent.toLowerCase().replace(/\s+/g, '-');
-        openPage(target + '.html');
-    });
-});
-
-document.querySelectorAll('.menu-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const target = btn.textContent.toLowerCase().replace(/\s+/g, '-');
-        openPage(target + '.html');
-    });
-});
-
-// Magic particle effect
-document.addEventListener('click', e => {
-    const particle = document.createElement('div');
-    particle.classList.add('magic-particle');
-    document.body.appendChild(particle);
-    particle.style.left = (e.clientX - 8) + 'px';
-    particle.style.top = (e.clientY - 8) + 'px';
-    particle.addEventListener('animationend', () => particle.remove());
-});
-
-// Mouse trail effect
-let particlesArray = [];
-const maxParticles = 30;
-
-function createTrailParticle(x, y) {
-    if (particlesArray.length >= maxParticles) return;
-    
-    const particle = document.createElement('div');
-    particle.classList.add('trail-particle');
-    particle.style.left = x + 'px';
-    particle.style.top = y + 'px';
-    document.body.appendChild(particle);
-    
-    particle.addEventListener('animationend', () => {
-        particle.remove();
-        particlesArray = particlesArray.filter(p => p !== particle);
-    });
-    
-    particlesArray.push(particle);
-}
-
-function throttle(fn, delay) {
-    let lastCall = 0;
-    return function(...args) {
-        const now = Date.now();
-        if (now - lastCall >= delay) {
-            lastCall = now;
-            fn(...args);
+// Animated stats counter
+function animateValue(id, start, end, duration) {
+    const obj = document.getElementById(id);
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        obj.innerHTML = id === 'stat4' ? value + '%' : value.toLocaleString();
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
         }
     };
+    window.requestAnimationFrame(step);
 }
 
-const throttledCreateTrailParticle = throttle((x, y) => createTrailParticle(x, y), 20);
+// Start counter animation when stats section is in view
+const statsSection = document.querySelector('.stats');
+let statsAnimated = false;
+function checkStats() {
+    const statsPosition = statsSection.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight / 1.3;
 
-function onPointerMove(e) {
-    let x, y;
-    if (e.touches && e.touches.length > 0) {
-        x = e.touches[0].clientX; 
-        y = e.touches[0].clientY;
+    if (statsPosition < screenPosition && !statsAnimated) {
+        animateValue('stat1', 0, 12500, 2000);
+        animateValue('stat2', 0, 3820000, 2500);
+        animateValue('stat3', 0, 98500, 2200);
+        animateValue('stat4', 0, 92, 1800);
+        statsAnimated = true;
+    }
+}
+window.addEventListener('scroll', checkStats);
+window.addEventListener('load', checkStats);
+
+// Typing animation effect
+const typingText = "The quick brown fox jumps over the lazy dog. This sentence contains every letter in the English alphabet, making it perfect for typing practice.";
+let i = 0;
+const speed = 50;
+function typeWriter() {
+    if (i < typingText.length) {
+        document.querySelector(".typing-demo p").innerHTML = typingText.substring(0, i + 1) + '<span class="cursor"></span>';
+        i++;
+        setTimeout(typeWriter, speed);
     } else {
-        x = e.clientX; 
-        y = e.clientY;
+        // Restart animation after a delay
+        setTimeout(() => {
+            i = 0;
+            typeWriter();
+        }, 3000);
     }
-    throttledCreateTrailParticle(x, y);
 }
-
-window.addEventListener('mousemove', onPointerMove);
-window.addEventListener('touchmove', onPointerMove, { passive: true });
-
-// Initialize animations
-function initAnimations() {
-    const animatedElements = document.querySelectorAll('.card, .feature');
-    
-    animatedElements.forEach((el, index) => {
-        el.classList.add('fade-in');
-        el.style.animationDelay = `${index * 0.1}s`;
-    });
-}
-
-// Testimonial animation
-function initTestimonialAnimation() {
-    const testimonials = document.querySelectorAll('.testimonial');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.2 });
-    
-    testimonials.forEach(testimonial => {
-        observer.observe(testimonial);
-    });
-}
-
-// Typing animation
-function initTypingAnimation() {
-    const typingText = document.querySelector('.typing-text');
-    if (!typingText) return;
-    
-    const texts = ['Online Typing Practice', 'Typing Speed', 'Accuracy', 'Productivity'];
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingDelay = 100;
-    
-    function type() {
-        const currentText = texts[textIndex];
-        
-        if (isDeleting) {
-            typingText.textContent = currentText.substring(0, charIndex - 1);
-            charIndex--;
-            typingDelay = 50;
-        } else {
-            typingText.textContent = currentText.substring(0, charIndex + 1);
-            charIndex++;
-            typingDelay = 100;
-        }
-        
-        if (!isDeleting && charIndex === currentText.length) {
-            isDeleting = true;
-            typingDelay = 1000;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-            typingDelay = 500;
-        }
-        
-        setTimeout(type, typingDelay);
-    }
-    
-    setTimeout(type, 1000);
-}
-
-// CTA button animation
-const ctaButton = document.querySelector('.cta-button');
-if (ctaButton) {
-    ctaButton.addEventListener('mouseover', () => {
-        ctaButton.style.transform = 'translateY(-3px)';
-        ctaButton.style.boxShadow = '0 6px 20px rgba(37, 99, 235, 0.4)';
-    });
-    
-    ctaButton.addEventListener('mouseout', () => {
-        ctaButton.style.transform = 'translateY(0)';
-        ctaButton.style.boxShadow = '0 4px 15px rgba(37, 99, 235, 0.3)';
-    });
-}
+// Start typing animation
+setTimeout(typeWriter, 1000);
