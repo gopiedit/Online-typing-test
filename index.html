@@ -4,63 +4,152 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Best online typing practice tool for all levels—beginner, intermediate, advanced. Practice with games and tutorials." />
-  <title>Online Typing Practice | TypeMasterzero </title>
+  <title>Online Typing Practice | TypeMaster Pro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Animated Background Elements -->
+  <div class="bg-animation">
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+  </div>
+
   <header class="header" role="banner">
     <div class="logo" aria-label="TypingMaster logo" role="img" tabindex="0">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4v16h14V4H5zm13 15H6V5h12v14zm-7.5-3.5h1v-5h-1v5zm3 0h1v-5h-1v5z"/></svg>
-      <strong>TypingMaster</strong>
+      <strong>TypeMaster <span>Pro</span></strong>
     </div>
     <nav class="menu-nav" role="navigation" aria-label="Primary navigation">
       <button class="menu-btn active" aria-current="page" data-target="index.html">Home</button>
-      <button class="menu-btn" data-target="test.html">Test</button>
-      <button class="menu-btn" data-target="game.html">Game</button>
-      <button id="darkModeToggle" title="Toggle dark mode" aria-pressed="false" aria-label="Toggle dark mode">🌙</button>
+      <button class="menu-btn" data-target="test.html">Speed Test</button>
+      <button class="menu-btn" data-target="game.html">Games</button>
+      <button id="darkModeToggle" title="Toggle dark mode" aria-pressed="false" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+      </button>
     </nav>
   </header>
 
   <main id="main-content" role="main">
-    <section class="intro" aria-label="Introduction">
-      <h1>Online Typing Practice</h1>
-      <p class="tagline">Practice and level up your typing speed and accuracy — Beginner, Intermediate, Advanced, Games, Tutorial.</p>
+    <section class="hero" aria-label="Introduction">
+      <div class="hero-content">
+        <h1>Master Your <span class="typing-text">Typing Skills</span></h1>
+        <p class="tagline">Improve your typing speed and accuracy with our interactive practice platform. Suitable for all skill levels.</p>
+        <div class="stats-container">
+          <div class="stat">
+            <span class="stat-number" data-count="99">0</span>%
+            <span class="stat-label">Accuracy</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-count="80">0</span>WPM
+            <span class="stat-label">Speed</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-count="1000">0</span>+
+            <span class="stat-label">Users</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="keyboard-visual">
+          <div class="keyboard-keys"></div>
+          <div class="typing-hands"></div>
+        </div>
+      </div>
     </section>
 
-    <section class="card-grid" aria-label="Typing practice options">
-      <article tabindex="0" class="card beginner" data-target="beginner.html">
-        Beginner
-      </article>
-      <article tabindex="0" class="card intermediate" data-target="intermediate.html">
-        Intermediate
-      </article>
-      <article tabindex="0" class="card advanced" data-target="advanced.html">
-        Advanced
-      </article>
-      <article tabindex="0" class="card tutorial" data-target="tutorial.html">
-        Tutorial
-      </article>
-      <article tabindex="0" class="card games" data-target="games.html">
-        Games
-      </article>
-        <article tabindex="0" class="card TEST" data-target="Test.html">
-        Tast
-      </article>
+    <section class="practice-section" aria-label="Typing practice options">
+      <h2>Choose Your Practice Mode</h2>
+      <div class="card-grid">
+        <article tabindex="0" class="card beginner" data-target="beginner.html">
+          <i class="fas fa-feather"></i>
+          <h3>Beginner</h3>
+          <p>Learn the basics of touch typing</p>
+        </article>
+        <article tabindex="0" class="card intermediate" data-target="intermediate.html">
+          <i class="fas fa-bolt"></i>
+          <h3>Intermediate</h3>
+          <p>Build speed with common words</p>
+        </article>
+        <article tabindex="0" class="card advanced" data-target="advanced.html">
+          <i class="fas fa-fire"></i>
+          <h3>Advanced</h3>
+          <p>Master complex texts and speed</p>
+        </article>
+        <article tabindex="0" class="card tutorial" data-target="tutorial.html">
+          <i class="fas fa-graduation-cap"></i>
+          <h3>Tutorials</h3>
+          <p>Step-by-step typing lessons</p>
+        </article>
+        <article tabindex="0" class="card games" data-target="games.html">
+          <i class="fas fa-gamepad"></i>
+          <h3>Games</h3>
+          <p>Learn typing with fun games</p>
+        </article>
+        <article tabindex="0" class="card test" data-target="test.html">
+          <i class="fas fa-tachometer-alt"></i>
+          <h3>Speed Test</h3>
+          <p>Test your typing speed (WPM)</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="features-section">
+      <h2>Why Choose TypeMaster?</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <i class="fas fa-chart-line"></i>
+          <h3>Track Progress</h3>
+          <p>Monitor your WPM and accuracy improvements over time</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-trophy"></i>
+          <h3>Earn Badges</h3>
+          <p>Get rewarded for your achievements and milestones</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-users"></i>
+          <h3>Compete</h3>
+          <p>Challenge friends in typing competitions</p>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer class="footer" role="contentinfo">
-    <nav role="navigation" aria-label="Footer navigation">
-      <a href="index.html" tabindex="0">Home</a>
-      <a href="privacy-policy.html" tabindex="0">Privacy Policy</a>
-      <a href="disclaimer.html" tabindex="0">Disclaimer</a>
-      <a href="about-us.html" tabindex="0">About Us</a>
-      <a href="contact-us.html" tabindex="0">Contact Us</a>
-      <a href="homeFAQ.html" tabindex="0">FAQ</a>
-    </nav>
-    <p>© 2025 TypingMaster. All rights reserved.</p>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>TypeMaster Pro</h3>
+        <p>The ultimate typing practice platform for all skill levels.</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="test.html">Speed Test</a>
+        <a href="game.html">Games</a>
+        <a href="tutorial.html">Tutorials</a>
+      </div>
+      <div class="footer-section">
+        <h4>Support</h4>
+        <a href="about-us.html">About Us</a>
+        <a href="contact-us.html">Contact Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="homeFAQ.html">FAQ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 TypeMaster Pro. All rights reserved.</p>
+    </div>
   </footer>
+  
   <script src="script.js"></script>
 </body>
 </html>
