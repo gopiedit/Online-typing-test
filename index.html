@@ -2,195 +2,129 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RapidTyping - Free Online Typing Practice</title>
-    <meta name="description" content="Improve your typing speed and accuracy with RapidTyping - the best online typing practice tool. Free typing lessons, tests, and games for all skill levels." />
-    <meta name="keywords" content="online typing practice, typing speed test, typing tutor, learn typing, typing games, touch typing, typing lessons, free typing practice" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RapidTyping - Free Online Typing Practice to Improve Your Speed</title>
+    <meta name="description" content="Improve your typing speed with RapidTyping's free online typing practice. Fun games, tests, and tutorials for beginners to advanced typists." />
+    <meta name="keywords" content="online typing practice, typing test, typing games, learn typing, typing speed, typing tutor, keyboard practice" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="styles.css" /> <!-- External CSS link -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+    <!-- Floating Elements -->
+    <div class="floating float-1"></div>
+    <div class="floating float-2"></div>
+    <div class="floating float-3"></div>
     <!-- Header -->
-    <header class="header" role="banner">
-        <div class="logo">
-            <i class="fas fa-keyboard"></i>
-            <div>Rapid<span>Typing</span></div>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-keyboard"></i>
+                <span>RapidTyping</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Games</a></li>
+                </ul>
+            </nav>
+            <div class="toggle-container">
+                <span class="toggle-text">Dark Mode</span>
+                <label class="toggle-theme">
+                    <input type="checkbox" id="theme-toggle" />
+                    <span class="slider"></span>
+                </label>
+            </div>
         </div>
-        <nav class="menu-nav" role="navigation" aria-label="Primary navigation">
-            <button class="menu-btn active" aria-current="page">Home</button>
-            <button class="menu-btn">Typing Test</button>
-            <button class="menu-btn">Lessons</button>
-            <button class="menu-btn">Games</button>
-            <button class="menu-btn">Contact</button>
-            <button id="darkModeToggle" title="Toggle dark mode" aria-pressed="false" aria-label="Toggle dark mode">
-                <i class="fas fa-moon"></i>
-            </button>
-        </nav>
     </header>
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Master Typing with <span class="typing-text">Online Typing Practice</span></h1>
-        <p>Improve your typing speed and accuracy with our free online typing practice tool. Perfect for beginners and advanced typists alike.</p>
-        <button class="cta-button">Start Typing Now</button>
-    </section>
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stat-item">
-            <span class="stat-number">100,000+</span>
-            <span class="stat-label">Users</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number">95%</span>
-            <span class="stat-label">Accuracy Improvement</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number">40 WPM</span>
-            <span class="stat-label">Average Speed Gain</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number">24/7</span>
-            <span class="stat-label">Available</span>
-        </div>
-    </section>
-    <!-- Practice Section -->
-    <section class="practice-section">
-        <div class="container">
-            <h2 class="section-title">Online Typing Practice Options</h2>
-            <div class="card-grid">
-                <article class="card">
-                    <i class="fas fa-user-graduate"></i>
-                    <h3>Beginner Lessons</h3>
-                    <p>Start from scratch and learn proper finger placement with our step-by-step typing lessons.</p>
-                    <button class="card-button">Start Learning</button>
-                </article>
-                <article class="card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Speed Practice</h3>
-                    <p>Improve your words per minute (WPM) with our specialized speed building exercises.</p>
-                    <button class="card-button">Practice Now</button>
-                </article>
-                <article class="card">
-                    <i class="fas fa-bullseye"></i>
-                    <h3>Accuracy Drills</h3>
-                    <p>Focus on precision with exercises designed to minimize typos and increase accuracy.</p>
-                    <button class="card-button">Try Drills</button>
-                </article>
-                <article class="card">
-                    <i class="fas fa-gamepad"></i>
-                    <h3>Typing Games</h3>
-                    <p>Make learning fun with our engaging typing games that improve your skills while having fun.</p>
-                    <button class="card-button">Play Games</button>
-                </article>
-                <article class="card">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <h3>Speed Test</h3>
-                    <p>Test your typing speed and accuracy with our comprehensive typing test.</p>
-                    <button class="card-button">Take Test</button>
-                </article>
-                <article class="card">
-                    <i class="fas fa-certificate"></i>
-                    <h3>Get Certified</h3>
-                    <p>Earn a typing certificate to showcase your skills to employers and add to your resume.</p>
-                    <button class="card-button">Get Certified</button>
-                </article>
+        <div class="container hero-content">
+            <h1>Master Typing at Lightning Speed</h1>
+            <p>
+                Improve your typing skills with our free online typing practice. Fun games, detailed tests, and comprehensive tutorials for everyone from beginners to advanced typists.
+            </p>
+            <div class="typing-demo">
+                <p></p>
+                <span class="cursor"></span>
             </div>
+            <a href="#" class="cta-button">Start Typing Now <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
     <!-- Features Section -->
     <section class="features">
         <div class="container">
-            <h2 class="section-title">Why Choose Our Online Typing Practice?</h2>
-            <div class="features-grid">
-                <div class="feature">
-                    <i class="fas fa-clock"></i>
-                    <h3>Progress Tracking</h3>
-                    <p>Monitor your typing speed and accuracy improvements over time with detailed statistics.</p>
+            <h2 class="section-title">Practice Options</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3>Beginner</h3>
+                    <p>Start from scratch with our beginner-friendly lessons. Learn proper finger placement and build muscle memory.</p>
+                    <a href="#" class="card-button">Get Started</a>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-chart-pie"></i>
-                    <h3>Personalized Lessons</h3>
-                    <p>Get customized practice sessions based on your current skill level and improvement areas.</p>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Intermediate</h3>
+                    <p>Already know the basics? Level up your skills with more challenging exercises and faster typing drills.</p>
+                    <a href="#" class="card-button">Practice Now</a>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-trophy"></i>
-                    <h3>Achievement System</h3>
-                    <p>Earn badges and rewards as you progress through different typing levels and challenges.</p>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Advanced</h3>
+                    <p>Push your limits with advanced typing challenges, specialized keyboards, and speed building exercises.</p>
+                    <a href="#" class="card-button">Challenge Yourself</a>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-users"></i>
-                    <h3>Community Challenges</h3>
-                    <p>Compete with other typists in weekly challenges and climb the leaderboards.</p>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-stopwatch"></i></div>
+                    <h3>Typing Test</h3>
+                    <p>Test your typing speed and accuracy. Compare your results with others and track your progress over time.</p>
+                    <a href="#" class="card-button">Take Test</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Tutorials</h3>
+                    <p>Learn proper typing techniques with our step-by-step video tutorials and interactive guides.</p>
+                    <a href="#" class="card-button">Learn More</a>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-gamepad"></i></div>
+                    <h3>Typing Games</h3>
+                    <p>Make learning fun with our collection of engaging typing games that improve your speed and accuracy.</p>
+                    <a href="#" class="card-button">Play Games</a>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Testimonials -->
-    <section class="testimonials">
+    <!-- Stats Section -->
+    <section class="stats">
         <div class="container">
-            <h2 class="section-title">What Our Users Say</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <i class="fas fa-quote-right"></i>
-                    <p>"This online typing practice tool helped me increase my typing speed from 35 to 75 WPM in just two months. The games make practice fun!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">RS</div>
-                        <div class="author-details">
-                            <h4>Rahul Sharma</h4>
-                            <p>Student</p>
-                        </div>
-                    </div>
+            <h2 class="section-title">Why Choose RapidTyping?</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" id="stat1">0</div>
+                    <div class="stat-text">Active Users</div>
                 </div>
-                <div class="testimonial">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <i class="fas fa-quote-right"></i>
-                    <p>"As a data entry professional, I needed to improve my accuracy. The targeted exercises on this site helped me reduce errors by 90%."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">PK</div>
-                        <div class="author-details">
-                            <h4>Priya Kumar</h4>
-                            <p>Data Entry Specialist</p>
-                        </div>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat2">0</div>
+                    <div class="stat-text">Words Typed</div>
                 </div>
-                <div class="testimonial">
-                    <div class="testimonial-stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <i class="fas fa-quote-right"></i>
-                    <p>"The best typing practice website I've found. The interface is clean, the lessons are well-structured, and my typing has improved dramatically."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AS</div>
-                        <div class="author-details">
-                            <h4>Amit Singh</h4>
-                            <p>Software Developer</p>
-                        </div>
-                    </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat3">0</div>
+                    <div class="stat-text">Lessons Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="stat4">0%</div>
+                    <div class="stat-text">Accuracy Improved</div>
                 </div>
             </div>
         </div>
     </section>
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
+                <div class="footer-column">
                     <h3>RapidTyping</h3>
                     <p>The best free online typing practice platform to improve your typing speed and accuracy.</p>
                     <div class="social-icons">
@@ -200,38 +134,40 @@
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                <div class="footer-section">
+                <div class="footer-column">
                     <h3>Quick Links</h3>
-                    <ul class="footer-links">
+                    <ul>
                         <li><a href="#">Home</a></li>
                         <li><a href="#">Typing Test</a></li>
-                        <li><a href="#">Lessons</a></li>
-                        <li><a href="#">Games</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Typing Practice</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Beginner Lessons</a></li>
-                        <li><a href="#">Advanced Practice</a></li>
-                        <li><a href="#">Speed Tests</a></li>
-                        <li><a href="#">Accuracy Drills</a></li>
                         <li><a href="#">Typing Games</a></li>
+                        <li><a href="#">Typing Practice</a></li>
+                        <li><a href="#">Progress Tracking</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <p>Email: info@rapidtyping.com</p>
-                    <p>Phone: +91 9876543210</p>
-                    <p>Address: Tech Park, Bangalore, India</p>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="homeFAQ.html">FAQ</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="disclaimer.html">Disclaimer</a></li>
+                        <li><a href="contact-us.htm">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@rapidtyping.com</li>
+                        <li><i class="fas fa-phone"></i> +91 7870739518</li>
+                        <li><i class="fas fa-map-marker-alt"></i> fATEPUR LAPUNG, rancchi jharkhand, India</li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 RapidTyping - Online Typing Practice. All rights reserved.</p>
+            <div class="copyright">
+                <p>&copy; 2023 RapidTyping. All rights reserved.</p>
             </div>
         </div>
     </footer>
-    <script src="script.js"></script> <!-- External JS link -->
+    <script src="script.js"></script>
 </body>
 </html>
