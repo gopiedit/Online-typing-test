@@ -1,20 +1,679 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RapidTyping - Free Online Typing Practice to Improve Your Speed</title>
-    <meta name="description" content="Improve your typing speed with RapidTyping's free online typing practice. Fun games, tests, and tutorials for beginners to advanced typists." />
-    <meta name="keywords" content="online typing practice, typing test, typing games, learn typing, typing speed, typing tutor, keyboard practice" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
+    <meta name="description" content="Improve your typing speed with RapidTyping's free online typing practice. Fun games, tests, and tutorials for beginners to advanced typists.">
+    <meta name="keywords" content="online typing practice, typing test, typing games, learn typing, typing speed, typing tutor, keyboard practice">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3a0ca3;
+            --accent: #f72585;
+            --success: #4cc9f0;
+            --warning: #ffbe0b;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --text-light: #f8f9fa;
+            --text-dark: #212529;
+            --bg-light: #ffffff;
+            --bg-dark: #121212;
+            --card-light: #ffffff;
+            --card-dark: #1e1e1e;
+            --transition: all 0.3s ease;
+        }
+
+        .dark-mode {
+            --bg-light: #121212;
+            --bg-dark: #000000;
+            --text-light: #f8f9fa;
+            --text-dark: #e0e0e0;
+            --card-light: #1e1e1e;
+            --card-dark: #2d2d2d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-dark) 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            transition: var(--transition);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(67, 97, 238, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { text-shadow: 0 0 10px rgba(67, 97, 238, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(67, 97, 238, 0.8); }
+            100% { text-shadow: 0 0 10px rgba(67, 97, 238, 0.5); }
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-text {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .toggle-theme {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+
+        .toggle-theme input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--dark);
+            transition: var(--transition);
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: var(--transition);
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: var(--primary);
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%234361ee" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,224C672,235,768,181,864,170.7C960,160,1056,192,1152,186.7C1248,181,1344,139,1392,117.3L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 0 auto 30px;
+            color: var(--text-dark);
+            max-width: 600px;
+        }
+
+        .typing-demo {
+            font-family: 'Roboto Mono', monospace;
+            background: rgba(67, 97, 238, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px auto;
+            max-width: 700px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .typing-demo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background: var(--primary);
+            margin-left: 2px;
+            vertical-align: middle;
+            animation: blink 1s infinite;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%233a0ca3" fill-opacity="0.05" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,224C672,235,768,181,864,170.7C960,160,1056,192,1152,186.7C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, var(--card-light) 0%, var(--card-dark) 100%);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(58, 12, 163, 0.1) 100%);
+            z-index: -1;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: var(--transition);
+            border-radius: 15px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.1);
+            color: var(--accent);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .card p {
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .card-button {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .card-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 60px 0;
+            background: rgba(67, 97, 238, 0.05);
+            text-align: center;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            padding: 20px;
+            background: linear-gradient(145deg, var(--card-light) 0%, var(--card-dark) 100%);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #000000 100%);
+            color: var(--text-light);
+            padding: 60px 0 20px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--success);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--success);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--success);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Floating Elements */
+        .floating {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .float-1 {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .float-2 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation: float 18s infinite ease-in-out;
+        }
+
+        .float-3 {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation: float 12s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .cards-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Floating Elements -->
     <div class="floating float-1"></div>
     <div class="floating float-2"></div>
     <div class="floating float-3"></div>
+
     <!-- Header -->
     <header>
         <div class="container header-content">
@@ -32,63 +691,82 @@
             <div class="toggle-container">
                 <span class="toggle-text">Dark Mode</span>
                 <label class="toggle-theme">
-                    <input type="checkbox" id="theme-toggle" />
+                    <input type="checkbox" id="theme-toggle">
                     <span class="slider"></span>
                 </label>
             </div>
         </div>
     </header>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container hero-content">
             <h1>Master Typing at Lightning Speed</h1>
-            <p>
-                Improve your typing skills with our free online typing practice. Fun games, detailed tests, and comprehensive tutorials for everyone from beginners to advanced typists.
-            </p>
+            <p>Improve your typing skills with our free online typing practice. Fun games, detailed tests, and comprehensive tutorials for everyone from beginners to advanced typists.</p>
+            
             <div class="typing-demo">
-                <p></p>
+                <p>The quick brown fox jumps over the lazy dog. This sentence contains every letter in the English alphabet, making it perfect for typing practice.</p>
                 <span class="cursor"></span>
             </div>
+            
             <a href="#" class="cta-button">Start Typing Now <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
+
     <!-- Features Section -->
     <section class="features">
         <div class="container">
             <h2 class="section-title">Practice Options</h2>
             <div class="cards-container">
                 <div class="card">
-                    <div class="card-icon"><i class="fas fa-user-graduate"></i></div>
+                    <div class="card-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
                     <h3>Beginner</h3>
                     <p>Start from scratch with our beginner-friendly lessons. Learn proper finger placement and build muscle memory.</p>
                     <a href="#" class="card-button">Get Started</a>
                 </div>
+                
                 <div class="card">
-                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
                     <h3>Intermediate</h3>
                     <p>Already know the basics? Level up your skills with more challenging exercises and faster typing drills.</p>
                     <a href="#" class="card-button">Practice Now</a>
                 </div>
+                
                 <div class="card">
-                    <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                    <div class="card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
                     <h3>Advanced</h3>
                     <p>Push your limits with advanced typing challenges, specialized keyboards, and speed building exercises.</p>
                     <a href="#" class="card-button">Challenge Yourself</a>
                 </div>
+                
                 <div class="card">
-                    <div class="card-icon"><i class="fas fa-stopwatch"></i></div>
+                    <div class="card-icon">
+                        <i class="fas fa-stopwatch"></i>
+                    </div>
                     <h3>Typing Test</h3>
                     <p>Test your typing speed and accuracy. Compare your results with others and track your progress over time.</p>
                     <a href="#" class="card-button">Take Test</a>
                 </div>
+                
                 <div class="card">
-                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
                     <h3>Tutorials</h3>
                     <p>Learn proper typing techniques with our step-by-step video tutorials and interactive guides.</p>
                     <a href="#" class="card-button">Learn More</a>
                 </div>
+                
                 <div class="card">
-                    <div class="card-icon"><i class="fas fa-gamepad"></i></div>
+                    <div class="card-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
                     <h3>Typing Games</h3>
                     <p>Make learning fun with our collection of engaging typing games that improve your speed and accuracy.</p>
                     <a href="#" class="card-button">Play Games</a>
@@ -96,6 +774,7 @@
             </div>
         </div>
     </section>
+
     <!-- Stats Section -->
     <section class="stats">
         <div class="container">
@@ -120,6 +799,7 @@
             </div>
         </div>
     </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -134,6 +814,7 @@
                         <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
+                
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
@@ -144,30 +825,116 @@
                         <li><a href="#">Progress Tracking</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-column">
                     <h3>Support</h3>
                     <ul>
-                        <li><a href="homeFAQ.html">FAQ</a></li>
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms of Service</a></li>
-                        <li><a href="disclaimer.html">Disclaimer</a></li>
-                        <li><a href="contact-us.htm">Contact Us</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                        <li><a href="#">Contact Us</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-column">
                     <h3>Contact Info</h3>
                     <ul>
                         <li><i class="fas fa-envelope"></i> support@rapidtyping.com</li>
-                        <li><i class="fas fa-phone"></i> +91 7870739518</li>
-                        <li><i class="fas fa-map-marker-alt"></i> fATEPUR LAPUNG, rancchi jharkhand, India</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Silicon Valley, CA</li>
                     </ul>
                 </div>
             </div>
+            
             <div class="copyright">
                 <p>&copy; 2023 RapidTyping. All rights reserved.</p>
             </div>
         </div>
     </footer>
-    <script src="script.js"></script>
+
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        themeToggle.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Animation for cards on scroll
+        const cards = document.querySelectorAll('.card');
+        
+        function checkScroll() {
+            cards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (cardPosition < screenPosition) {
+                    card.classList.add('show');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Animated stats counter
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                obj.innerHTML = id === 'stat4' ? value + '%' : value.toLocaleString();
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Start counter animation when stats section is in view
+        const statsSection = document.querySelector('.stats');
+        let statsAnimated = false;
+
+        function checkStats() {
+            const statsPosition = statsSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+            
+            if (statsPosition < screenPosition && !statsAnimated) {
+                animateValue('stat1', 0, 12500, 2000);
+                animateValue('stat2', 0, 3820000, 2500);
+                animateValue('stat3', 0, 98500, 2200);
+                animateValue('stat4', 0, 92, 1800);
+                statsAnimated = true;
+            }
+        }
+
+        window.addEventListener('scroll', checkStats);
+        window.addEventListener('load', checkStats);
+
+        // Typing animation effect
+        const typingText = "The quick brown fox jumps over the lazy dog. This sentence contains every letter in the English alphabet, making it perfect for typing practice.";
+        let i = 0;
+        const speed = 50;
+
+        function typeWriter() {
+            if (i < typingText.length) {
+                document.querySelector(".typing-demo p").innerHTML = typingText.substring(0, i+1) + '<span class="cursor"></span>';
+                i++;
+                setTimeout(typeWriter, speed);
+            } else {
+                // Restart animation after a delay
+                setTimeout(() => {
+                    i = 0;
+                    typeWriter();
+                }, 3000);
+            }
+        }
+
+        // Start typing animation
+        setTimeout(typeWriter, 1000);
+    </script>
 </body>
 </html>
